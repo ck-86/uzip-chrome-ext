@@ -11,8 +11,11 @@
         "clipboardRead"
     ],
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": "icon_blue_19.png",
         "default_popup": "index.html",
         "default_title": "UZIP - url shortner"
-    }
+    },
+    "icons": {
+      "48": "icon_blue_48.png"
+   }
 }

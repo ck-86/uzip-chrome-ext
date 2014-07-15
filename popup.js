@@ -13,7 +13,8 @@ function copyToClipboard() {
     document.execCommand('SelectAll');
     document.execCommand("Copy", false, null);
     document.body.removeChild(copyDiv);
-    window.close(); //Close Chrome Extenstion Box
+    $('body').fadeOut('slow').queue( function(){ window.close(); } );
+    //window.close(); //Close Chrome Extenstion Box
 }
 
 
@@ -31,8 +32,16 @@ function shortenUrl(longUrl) {
         contentType: "application/json;",
         dataType: "json",
         success: function(data) {
-            console.log(data.code);
-            $('#shortUrl').val("http://uzip.org/" + data.code);
+            
+            if(data.code){
+              $('#shortUrl').val("http://uzip.org/" + data.code);
+              $(".btn").show();
+              $("#copyButton").focus();
+            } else {
+              $('#shortUrl').val("Not valid url");
+              $(".btn").hide();
+            }
+            
             
             //Adding Event Listener Becoz of Chrome Security Issue
             var copyBtn = document.getElementById("copyButton");
